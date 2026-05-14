@@ -1,0 +1,492 @@
+/* ============================================
+   STYLE.CSS — Site NSI Première
+   Auteur : [Ton Nom]
+   Description : Feuille de style principale
+============================================ */
+
+/* Importation de polices Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Mono:wght@300;400;500&display=swap');
+
+/* Variables CSS globales réutilisables dans tout le fichier */
+:root {
+  --fond: #0e1117;
+  --fond-carte: #161b27;
+  --bordure: #2a3148;
+  --bleu: #4fc3f7;
+  --violet: #7c4dff;
+  --vert: #00e5a0;
+  --texte: #e8eaf0;
+  --texte-doux: #8892a4;
+  --titre: 'Syne', sans-serif;
+  --code: 'DM Mono', monospace;
+  --rayon: 12px;
+}
+
+/* Réinitialisation globale : supprime les marges par défaut */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--fond);
+  color: var(--texte);
+  font-family: var(--code);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* ---- EN-TÊTE ---- */
+header {
+  background: var(--fond);
+  border-bottom: 1px solid var(--bordure);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-family: var(--titre);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--bleu);
+  text-decoration: none;
+}
+.logo span { color: var(--violet); }
+
+nav { display: flex; gap: 0.4rem; }
+
+nav a {
+  color: var(--texte-doux);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  /* Transition douce pour apparence dynamique */
+  transition: color 0.2s, background 0.2s;
+}
+
+/* Apparence dynamique : survol lien nav */
+nav a:hover {
+  color: var(--bleu);
+  background: rgba(79,195,247,0.08);
+}
+
+nav a.actif {
+  color: var(--bleu);
+  background: rgba(79,195,247,0.12);
+}
+
+/* ---- HERO ---- */
+.hero {
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(124,77,255,0.15);
+  border: 1px solid rgba(124,77,255,0.4);
+  color: #b39ddb;
+  font-size: 0.8rem;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: var(--titre);
+  font-weight: 800;
+  font-size: clamp(2rem, 6vw, 3.8rem);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+
+/* Dégradé de couleur sur le titre */
+.hl {
+  background: linear-gradient(90deg, var(--bleu), var(--violet));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  color: var(--texte-doux);
+  font-size: 1.05rem;
+  max-width: 560px;
+  margin: 0 auto 2rem;
+}
+
+/* ---- BOUTONS ---- */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.8rem;
+  border-radius: var(--rayon);
+  font-family: var(--code);
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+/* Apparence dynamique : survol bouton */
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(79,195,247,0.3);
+  filter: brightness(1.1);
+}
+
+/* Apparence dynamique : clic bouton */
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-p {
+  background: linear-gradient(135deg, var(--bleu), var(--violet));
+  color: #fff;
+  font-weight: 500;
+}
+
+.btn-s {
+  background: transparent;
+  border: 1px solid var(--bordure);
+  color: var(--texte-doux);
+  margin-left: 0.75rem;
+}
+
+.btn-s:hover {
+  border-color: var(--bleu);
+  color: var(--bleu);
+  box-shadow: none;
+  filter: none;
+  transform: none;
+}
+
+/* ---- CONTENU ---- */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+section { margin-bottom: 4rem; }
+
+section h2 {
+  font-family: var(--titre);
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Barre colorée avant les titres h2 */
+section h2::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1.4em;
+  background: linear-gradient(180deg, var(--bleu), var(--violet));
+  border-radius: 4px;
+}
+
+/* ---- CARTES ---- */
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+.carte {
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 1.5rem;
+  /* Apparence dynamique : transition au survol */
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Apparence dynamique : carte survolée */
+.carte:hover {
+  border-color: var(--bleu);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(79,195,247,0.1);
+}
+
+.carte-icone { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+.carte h3 {
+  font-family: var(--titre);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+.carte p { color: var(--texte-doux); font-size: 0.9rem; }
+
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-top: 0.8rem;
+  background: rgba(79,195,247,0.1);
+  color: var(--bleu);
+  border: 1px solid rgba(79,195,247,0.2);
+}
+
+/* ---- TABLEAU ---- */
+.tab-wrap {
+  overflow-x: auto;
+  border-radius: var(--rayon);
+  border: 1px solid var(--bordure);
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+
+thead { background: rgba(79,195,247,0.06); }
+
+th {
+  font-family: var(--titre);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.9rem 1.2rem;
+  color: var(--bleu);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--bordure);
+}
+
+td {
+  padding: 0.8rem 1.2rem;
+  border-bottom: 1px solid rgba(42,49,72,0.5);
+  color: var(--texte-doux);
+}
+
+tr:last-child td { border-bottom: none; }
+
+/* Apparence dynamique : survol ligne tableau */
+tr:hover td {
+  background: rgba(79,195,247,0.04);
+  color: var(--texte);
+}
+
+/* ---- BLOCS CODE ---- */
+.code {
+  background: #080b11;
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 1.5rem;
+  overflow-x: auto;
+  position: relative;
+  margin: 1rem 0;
+}
+
+.code pre {
+  font-family: var(--code);
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: #a8d8ea;
+}
+
+.code .lang {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  font-size: 0.7rem;
+  color: var(--texte-doux);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Coloration syntaxique */
+.kw { color: #7c4dff; }
+.fn { color: #4fc3f7; }
+.st { color: #00e5a0; }
+.cm { color: #546e7a; font-style: italic; }
+.nb { color: #ffab40; }
+
+/* ---- IMAGES ---- */
+.img-wrap {
+  border-radius: var(--rayon);
+  overflow: hidden;
+  border: 1px solid var(--bordure);
+  margin: 1.5rem 0;
+}
+
+.img-wrap img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  /* Apparence dynamique : zoom au survol */
+  transition: transform 0.4s ease;
+}
+
+.img-wrap:hover img { transform: scale(1.03); }
+
+.img-cap {
+  background: var(--fond-carte);
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  color: var(--texte-doux);
+  text-align: center;
+}
+
+/* ---- BARRES PROGRESSION ---- */
+.progres { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.progres-item label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  color: var(--texte-doux);
+}
+.progres-item label span { color: var(--bleu); }
+
+.barre {
+  height: 6px;
+  background: var(--bordure);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* Apparence dynamique : animation de la barre via JS */
+.barre-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--bleu), var(--violet));
+  border-radius: 999px;
+  width: 0%;
+  transition: width 1.2s ease;
+}
+
+/* ---- QUIZ ---- */
+.quiz-box {
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 2rem;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.quiz-q {
+  font-family: var(--titre);
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+.quiz-opts { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.quiz-opt {
+  background: transparent;
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--texte-doux);
+  font-family: var(--code);
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  /* Apparence dynamique : survol option */
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.quiz-opt:hover {
+  border-color: var(--bleu);
+  background: rgba(79,195,247,0.06);
+  color: var(--texte);
+}
+
+.quiz-opt.ok {
+  border-color: var(--vert);
+  background: rgba(0,229,160,0.07);
+  color: var(--vert);
+}
+
+.quiz-opt.ko {
+  border-color: #ff5252;
+  background: rgba(255,82,82,0.07);
+  color: #ff5252;
+}
+
+.quiz-msg { margin-top: 1rem; font-size: 0.9rem; min-height: 22px; }
+
+/* ---- STATISTIQUES ---- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.stat-box {
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 1.5rem;
+  text-align: center;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.stat-box:hover {
+  border-color: var(--bleu);
+  transform: translateY(-3px);
+}
+
+.stat-nb {
+  font-family: var(--titre);
+  font-size: 2.5rem;
+  font-weight: 800;
+  display: block;
+}
+
+.stat-label { color: var(--texte-doux); font-size: 0.85rem; margin-top: 0.3rem; }
+
+/* ---- PIED DE PAGE ---- */
+footer {
+  border-top: 1px solid var(--bordure);
+  padding: 2rem;
+  text-align: center;
+  color: var(--texte-doux);
+  font-size: 0.85rem;
+  margin-top: 4rem;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+footer a { color: var(--bleu); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ---- RESPONSIVE MOBILE ---- */
+@media (max-width: 640px) {
+  header { padding: 0.8rem 1rem; height: auto; flex-wrap: wrap; gap: 0.5rem; }
+  nav a { font-size: 0.78rem; padding: 0.35rem 0.5rem; }
+  .hero { padding: 3rem 1rem 2rem; }
+  main { padding: 1rem; }
+  .grille { grid-template-columns: 1fr; }
+  .btn-s { margin-left: 0; margin-top: 0.5rem; }
+}
